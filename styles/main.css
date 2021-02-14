@@ -4,10 +4,28 @@ html, body {
   overflow: hidden;
   font-family: monospace;
   user-select: none;
+  background-color: #468d51;
 }
 
 canvas {
+  position: absolute;
   z-index: -1;
+}
+
+#citation-container {
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: auto;
+  text-align: center;
+}
+
+#citation-container > h1 {
+  color: white;
+  font-size: 5em;
 }
 
 #HUD-section {

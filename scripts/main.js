@@ -17,7 +17,7 @@ var backgroundImage;
 
 var JSONviews = null;
 
-var currentView = -1;
+var currentView;
 
 var btnStart;
 var HUDContainer;
@@ -25,15 +25,24 @@ var HUDbtnNext;
 var HUDnbImage;
 var HUDScore;
 
+var citationContainer;
+
 var nbImage = 1;
 var score = 0;
 
 const STATES = Object.freeze({"WAITING":'waiting', "DRAGGING":'dragging', "CHECKED":'checked'});
 var playerState = STATES.WAITING;
 
+const citations = ["L'enthousiasme est une maladie qui se gagne.<br>Voltaire Lettres philosophiques, 18e siècle."];
+
+var viewMemory = [];
+
 function loadImages()
 {
-  currentView = floor(random(JSONviews.views.length));
+  do {
+    currentView = floor(random(JSONviews.views.length));
+  } while (viewMemory.indexOf(currentView) != -1);
+  viewMemory.push(currentView);
   var indexs = [0, 1, 2];
 
   shuffle(indexs, true);
@@ -58,7 +67,7 @@ function btnNextCallback()
 {
   if (playerState == STATES.DRAGGING) {
     playerState = STATES.CHECKED;
-    if (nbImage == 10)
+    if (nbImage == 7)
       HUDbtnNext.textContent = 'Finish';
     else
       HUDbtnNext.textContent = 'Next';
@@ -77,8 +86,12 @@ function btnNextCallback()
       HUDScore.textContent = score;
     }
   } else if (playerState == STATES.CHECKED) {
-    if (++nbImage > 10) {
+    if (++nbImage > 7) {
       playerState = STATES.WAITING;
+      HUDContainer.style.display = 'none';
+      canvas.hide();
+      theCitation.innerHTML = citations[floor(random(citations.length))] + '<br>(Score: ' + score  + '/10)';
+      citationContainer.style.display = 'block';
       return;
     } 
     HUDnbImage.textContent = nbImage;
@@ -107,6 +120,8 @@ function setup() {
   HUDbtnNext = document.getElementById('HUD-container-next-button');
   HUDnbImage = document.getElementById('HUD-nb-image');
   HUDScore = document.getElementById('HUD-score');
+  citationContainer = document.getElementById('citation-container');
+  theCitation = document.getElementById('citation');
 }
 
 function draw() {
