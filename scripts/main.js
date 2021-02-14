@@ -90,7 +90,7 @@ function btnNextCallback()
       playerState = STATES.WAITING;
       HUDContainer.style.display = 'none';
       canvas.hide();
-      theCitation.innerHTML = citations[floor(random(citations.length))] + '<br>(Score: ' + score  + '/10)';
+      theCitation.innerHTML = citations[floor(random(citations.length))] + '<br>(Score: ' + score  + '/7)';
       citationContainer.style.display = 'block';
       return;
     } 
