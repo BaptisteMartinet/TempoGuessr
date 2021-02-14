@@ -62,7 +62,7 @@ button:hover {
 #HUD-container > p {
   display: inline-block;
   color: #68d87a;
-  font-size: 3em;
+  font-size: 2.5vw;
   margin-right: 50px;
   font-weight: bold;
 }
