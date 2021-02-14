@@ -33,7 +33,8 @@ var score = 0;
 const STATES = Object.freeze({"WAITING":'waiting', "DRAGGING":'dragging', "CHECKED":'checked'});
 var playerState = STATES.WAITING;
 
-const citations = ["L'enthousiasme est une maladie qui se gagne.<br>Voltaire Lettres philosophiques, 18e siècle."];
+const citations = [`"Le temps adoucit tout."<br>Voltaire, 1778.`, `"En tout temps, en tous lieux, le public est injuste."<br>Voltaire, 1776`,
+                    `"Il faut laisser le temps au temps."<br>Auteur inconu, 21e siècle.`, `"Le temps n'est qu'imagination."<br>Auteur du futur, date inconue.`];
 
 var viewMemory = [];
 
